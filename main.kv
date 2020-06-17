@@ -1,0 +1,54 @@
+<Principal>:
+	
+	# ----- Layout esquerda ----- #
+	FloatLayout:
+
+		Button:
+			pos_hint: {'x': .05, 'y': .90}
+			size_hint: (.9, .08)
+			text: 'Limpar'
+			on_release: root.limpa_scrolview()
+
+		Button:
+			pos_hint: {'x': .05, 'y': .80}
+			size_hint: (.9, .08)
+			text: 'Ler Json'
+			on_release: root.adiciona_botao()
+
+		# ----- Wid rolagem da tela ----- #
+		ScrollView:
+			pos_hint: {'x': .05, 'y': .0}
+			size_hint: (.9, .70)
+
+			BoxLayout: # --- Layout onde vão ser adicionadas os botóes --- #
+				id: box_dados
+				padding: 5
+				spacing: 5
+				orientation: 'vertical'
+				size_hint_y: None
+				height: self.minimum_height
+
+	# ----- Layout direita ----- #
+	BoxLayout:
+		id: box_resultados		
+
+
+<ModeloBotao>:
+	id: botoes_resultado
+	size_hint_y: None
+	height: 40
+	on_release: app.root.resultado(self.text)
+
+
+<ModeloResultados>:
+	Label:
+		id: resultado
+		pos_hint: {'x': .05, 'y': .50}
+		size_hint: (.90, .50)
+		text: 'Deus'
+
+	Button:
+		pos_hint: {'x': .20, 'y': .20}
+		size_hint: (.60, .10)
+		text: 'Limpar'
+		on_release: app.root.limpa_box_resultados()
