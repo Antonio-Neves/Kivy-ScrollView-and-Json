@@ -47,12 +47,18 @@ class Principal(BoxLayout):
 
 		self.io_resultado = 0  # controla se widget ModeloResultado já existe
 
+		self.scroll_view = 0 # controla se widget scrollview já existe
+
 
 	# ----- Adiciona um botão por cada dado no json ----- #
 	def adiciona_botao(self):
 
-		for item in lista_dados:
-			self.ids.box_dados.add_widget(ModeloBotao(item[0]))
+		if self.scroll_view == 0:
+
+			for item in lista_dados:
+				self.ids.box_dados.add_widget(ModeloBotao(item[0]))
+
+		self.scroll_view = 1
 
 
 	# ----- Adiciona Widget do resultado ----- #
@@ -81,6 +87,8 @@ class Principal(BoxLayout):
 	def limpa_scrolview(self):
 
 		self.ids.box_dados.clear_widgets()
+
+		self.scroll_view = 0
 
 
 	# ----- Limpa o Widget do resultado ----- #
