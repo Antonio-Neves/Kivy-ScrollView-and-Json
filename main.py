@@ -1,6 +1,6 @@
 # ----- Importações iniciais ----- #
-#import kivy
-#kivy.require('1.11.1')
+# import kivy
+# kivy.require('1.11.1')
 
 import os
 from kivy import Config
