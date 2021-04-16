@@ -5,12 +5,18 @@
 import os
 from kivy import Config
 
-# ----- Soluciona problemas de OpenGL e placas graficas antigas ----- #
-try:
+import platform
+
+# ----- Soluciona problemas de OpenGL e placas graficas antigas em windows -- #
+if platform.system() == 'Windows':
+
 	os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 	Config.set('graphics', 'multisamples', '0')
-except:
-	pass
+
+# ----- Necessário para Video e Audio no Linux----- #
+if platform.system() == 'Linux':
+
+	os.environ['KIVY_VIDEO'] = 'ffpyplayer'
 
 # ----- Configuração da janela ----- #
 Config.set('graphics', 'resizable', False)
